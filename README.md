@@ -29,7 +29,7 @@ Este projeto consiste em um sistema de cadastro simples desenvolvido utilizando 
 1. O usuário preenche o formulário na Landing Page.
 2. O JavaScript verifica se todos os campos obrigatórios foram preenchidos.
 3. Somente após a validação, o botão **Cadastrar** é habilitado.
-4. Ao clicar no botão, o formulário envia os dados diretamente para o controlador em PHP.
+4. Ao clicar no botão, primeiro ocorre as requisições em JS e depois os dados vão diretamente para o controlador em PHP.
 5. O controlador realiza o processamento das informações e chama a classe para fazer o cadastro no banco de dados.
 6. Caso alguma informação seja inválida, o JavaScript impede o envio e informa o usuário sobre o erro encontrado.
 
