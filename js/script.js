@@ -2,6 +2,41 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ====== ANIMAÇÃO LETRA POR LETRA NO TÍTULO ======
+    const heroTitle = document.querySelector('.hero h1');
+    if (heroTitle) {
+        const texto = heroTitle.textContent;
+        heroTitle.innerHTML = '';
+        [...texto].forEach((letra, i) => {
+            const span = document.createElement('span');
+            span.classList.add('letter');
+            span.textContent = letra === ' ' ? '\u00A0' : letra;
+            span.style.animationDelay = `${0.4 + i * 0.04}s`;
+            heroTitle.appendChild(span);
+        });
+    }
+
+    // ====== SCROLL REVEAL - INTERSECTION OBSERVER ======
+    const revealElements = document.querySelectorAll(
+        '.section-title, .card, .form-wrapper, footer'
+    );
+
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
     //Selecionar os elementos do DOM
 
     const inputSenha = document.getElementById('senha');
